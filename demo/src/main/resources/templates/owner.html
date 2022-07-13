@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>
+        Owner Page
+    </title>
+
+    <!--Add Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+            crossorigin="anonymous"></script>
+
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../assets/layui/css/layui.css" media="all">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script type="text/javascript" src="../assets/js/jquery-2.1.4.min.js">
+    </script>
+    <script type="text/javascript" src="../assets/layui/layui.js">
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAap82KSAKdQGvRowOArfCxeCrESLqm8xs&callback=initMap&language=en-us">
+    </script>
+    <script type="text/javascript" src="../js/owner.js">
+    </script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <a href="/index">
+            <div class="layui-logo">
+                Home Page
+            </div>
+        </a>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                </a>
+                <dl class="layui-nav-child">
+                    <dd>
+                        <a href="">
+                            basic information
+                        </a>
+                    </dd>
+                    <dd>
+                        <a href="">
+                            safty settings
+                        </a>
+                    </dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item">
+                <a href="/logout">
+                    Logout
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="layui-side ">
+        <div class="layui-side-scroll">
+            <div id="orderTable">
+            </div>
+        </div>
+    </div>
+    <div class="layui-body" style="top:50px;width:100%;height:100%;">
+        <!-- 内容主体区域 -->
+        <div class="layui-tab layui-tab-card" lay-filter="demo" lay-allowclose="true"
+             style="width:100%;height:100%;">
+            <ul class="layui-tab-title">
+            </ul>
+            <div class="layui-tab-content" style="width:100%;height:100%;">
+                <div id="googleMap" style="width:80%;height:80%;">
+                </div>
+                <div class="d-grid gap-2">
+                    <button id="upload" name="upload" type="button" class="btn btn-primary">
+                        Upload parking space information
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="layui-footer">-->
+        <!-- &lt;!&ndash; Bottom fixed area &ndash;&gt;-->
+        <!-- © layui.com - Bottom fixed area-->
+        <!-- </div>-->
+    </div>
+</div>
+<style type="text/css">
+    .layui-side {
+        width: 500px !important;
+    }
+
+    .layui-side-scroll {
+        width: 500px !important;
+
+    }
+
+    .layui-body {
+        left: 500px !important;
+    }
+
+    #upload {
+        font-size: x-large;
+        position: absolute;
+        right: 55%;
+        bottom: 20%;
+        /*width: 120px;
+        height: 120px;*/
+        /*background: #00c292;
+        color: white;*/
+    }
+
+</style>
+
+
+</body>
+<div id="carFrom" style="display: none;">
+    <form id="carExample" action="">
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+                Owner name:
+            </label>
+            <div class="layui-inline">
+                <input type="text" class="layui-input" id="name" name="name">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+                Phone number:
+            </label>
+            <div class="layui-inline">
+                <input type="text" class="layui-input" id="phone" name="phone">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+                address:
+            </label>
+            <div class="layui-inline">
+                <input type="text" class="layui-input" id="address" name="address">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">
+                    time:
+                </label>
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input" name="" id="time_range_1" readonly
+                           placeholder="Time starts & Time ends">
+                    <input type="text" style="display: none;" name="startTime" id="startTime"
+                           readonly>
+                    <input type="text" style="display: none;" name="endTime" id="endTime"
+                           readonly>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+                price:
+            </label>
+            <div class="layui-inline">
+                <input type="text" class="layui-input" id="price" name="price">
+            </div>
+        </div>
+        <div class="layui-form-item" id="reMs">
+            <label class="layui-form-label">
+            </label>
+            <div class="layui-inline">
+            </div>
+        </div>
+    </form>
+</div>
+
+</html>

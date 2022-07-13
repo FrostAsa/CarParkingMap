@@ -1,0 +1,216 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+ol,
+dl,
+li,
+dt,
+dd {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+    font-size: 100%;
+}
+
+img {
+    vertical-align: middle;
+    content: normal !important;
+}
+
+html {
+    background: #f5f6fa;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+.size {
+    width: 100%;
+    height: 100%;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+#app {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.login {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url(/imgs/bg.png) center center no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+
+.loginMain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    background: rgba(33, 34, 66, 0.3);
+}
+
+.titleBox {
+    width: 42%;
+    height: 60%;
+    min-height: 318px;
+    position: fixed;
+    margin-left: 11%;
+    margin-top: 14%;
+}
+
+.titleBox h1 {
+    position: fixed;
+    top: 30%;
+    left: 11%;
+    font-size: 3.1vw;
+    color: #ffffff;
+    letter-spacing: 1.5vw;
+    font-weight: 500;
+}
+
+.titleBox p {
+    font-size: 1.6vw;
+    color: #ffffff;
+    letter-spacing: 0.6vw;
+    position: fixed;
+    top: 42%;
+    left: 35%;
+}
+
+.loginBox {
+    position: fixed;
+    top: 0;
+    left: 62%;
+    width: 100%;
+    height: 100%;
+    background: rgba(33, 34, 66, 0.8);
+    padding-left: 7.5vw;
+}
+
+.loginBox .box {
+    position: absolute;
+    top: 1%;
+    right: 64%;
+    width: 30%;
+    height: 88%;
+    min-height: 60vh;
+    padding-top: 10%;
+}
+
+.loginBox .box h1 {
+    font-weight: 500;
+    font-size: 2.58vw;
+    color: #ffffff;
+}
+
+.loginBox .logoimg {
+    position: fixed;
+    top: 8%;
+    right: 5%;
+    height: 3.5vw;
+    line-height: 3.5vw;
+}
+
+.loginBox .logoimg img {
+    width: 3.5vw;
+}
+
+.loginBox .title {
+    font-size: 1.86vw;
+    color: #ffffff;
+    margin-bottom: 12%;
+}
+
+.loginBox .myfrom p {
+    margin-bottom: 3vh;
+    line-height: 2vw;
+}
+
+.loginBox .myfrom p label {
+    font-size: 0.93vw;
+    display: block;
+    color: #999999;
+    margin: 0;
+}
+
+.loginBox .myfrom p input {
+    width: 24.18vw;
+    background: none;
+    border: none;
+    outline: none;
+    height: 5vh;
+    line-height: 5vh;
+    color: #ffffff;
+    font-size: 1.55vw;
+    border-bottom: 0.1vh solid #979797;
+    -webkit-tap-highlight-color: rgba(255, 0, 0, 0)
+}
+
+.loginBox .myfrom .btn {
+    margin-top: 6vh;
+    height: 2.58vw;
+    line-height: 2.58vw;
+    font-size: 0.82vw;
+    width: 24.18vw;
+    background-image: -webkit-gradient(linear, left top, right top, from(#ffa940), to(#ffa940));
+    background-image: linear-gradient(90deg, #ffa940 0%, #ffa940 100%);
+    -webkit-box-shadow: 0 0 10px 1px #ffa940;
+    box-shadow: 0 0 10px 1px #ffa940;
+    border-radius: 0.1vw;
+    color: #ffffff;
+    text-align: center;
+    cursor: pointer;
+}
+
+.loginBox .recommend {
+    font-size: 0.75vw;
+    color: #999999;
+    position: fixed;
+    bottom: 5vh;
+    right: 11.5vw;
+}
+
+.loginBox .Copyright {
+    font-size: 0.75vw;
+    position: fixed;
+    bottom: 2vh;
+    right: 14vw;
+    color: #fff;
+}

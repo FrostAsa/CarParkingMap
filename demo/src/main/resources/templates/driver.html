@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>
+        Driver Page
+    </title>
+
+    <!--Add Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+            crossorigin="anonymous"></script>
+
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../assets/layui/css/layui.css" media="all">
+    <script type="text/javascript" src="../assets/js/jquery-2.1.4.min.js">
+    </script>
+    <script type="text/javascript" src="../assets/layui/layui.js">
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAap82KSAKdQGvRowOArfCxeCrESLqm8xs&callback=initMap&language=en-us">
+    </script>
+    <script type="text/javascript" src="../js/index.js">
+    </script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <a href="/index">
+            <div class="layui-logo">
+                Main Page
+            </div>
+        </a>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                </a>
+                <dl class="layui-nav-child">
+                    <dd>
+                        <a href="">
+                            Basic information
+                        </a>
+                    </dd>
+                    <dd>
+                        <a href="">
+                            safety settings
+                        </a>
+                    </dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item">
+                <a href="/logout">
+                    Logout
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="layui-side">
+        <div class="layui-side-scroll" id="reT">
+            <div id="directionsPanel" style=""></div>
+            <form id="example" action="" style="display: none;">
+                <input id="carPortId" name="carPortId" type="hidden">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">
+                            Time:
+                        </label>
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input" name="" id="time_range_1" readonly
+                                   placeholder="start time to end time">
+                            <input type="text" style="display: none;" name="startTime" id="startTime"
+                                   readonly>
+                            <input type="text" style="display: none;" name="endTime" id="endTime"
+                                   readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        Total Price:
+                    </label>
+                    <div class="layui-inline">
+                        <input type="text" class="layui-input" id="price" name="price" disabled="disabled">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        start_address:
+                    </label>
+                    <div class="layui-inline">
+                        <input type="text" class="layui-input" id="startAdd" name="startAdd">
+                    </div>
+                </div>
+                <hr class="layui-bg-orange">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        Time:
+                    </label>
+                    <div class="layui-inline">
+                        <input type="text" class="layui-input" id="time" name="time" disabled="disabled">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        Unit price<br>(CAD/minute):
+                    </label>
+                    <div class="layui-inline">
+                        <input type="text" class="layui-input" id="price1" name="price1" disabled="disabled">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        Address:
+                    </label>
+                    <div class="layui-inline">
+                        <input type="text" class="layui-input" id="address" name="address" disabled="disabled">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        Status:
+                    </label>
+                    <div class="layui-inline">
+                        <input type="text" class="layui-input" id="status" name="status" disabled="disabled">
+                    </div>
+                </div>
+                <div class="submitDiv">
+                    <button id="addOrderBt" type="button" class="submit btn btn-primary"
+                            value="Submit order">
+
+                        <!--class="submit layui-btn layui-btn-primary"-->
+                        Submit Order
+                    </button>
+                    <button id="navigationBt" type="button" class="submit btn btn-primary"
+                            value="Navigate">
+                        Navigate
+                    </button>
+                </div>
+            </form>
+            <div id="orderItem" style="display: inline;">
+                <div id="orderTable">
+                </div>
+                <div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="layui-body" style="top:50px;width:100%;height:100%;">
+        <!-- Main body area -->
+        <div class="layui-tab layui-tab-card" lay-filter="demo" lay-allowclose="true"
+             style="width:100%;height:100%;">
+            <ul class="layui-tab-title">
+            </ul>
+            <div class="layui-tab-content" style="width:100%;height:100%;">
+                <div id="googleMap" style="width:80%;height:80%;">
+                </div>
+                <div class="r2">
+                    <button id="space" name="" value="parking space nearby" type="button" class="btn btn-primary">
+                        Parking Space Nearby
+                    </button>
+                </div>
+                <div class="r1">
+                    <button id="upload" name="upload" type="button" class="submit btn btn-primary">
+                        Upload Driver Information
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="layui-footer">-->
+        <!-- &lt;!&ndash; Bottom fixed area &ndash;&gt;-->
+        <!-- © layui.com - Bottom fixed area-->
+        <!-- </div>-->
+    </div>
+
+</div>
+<div type="text/html" id="uploadfrom" style="display: none;">
+    <form id="uploadExample" action="">
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+                Drive name:
+            </label>
+            <div class="layui-inline">
+                <input type="text" class="layui-input" id="carName" name="carName">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+                Phone number:
+            </label>
+            <div class="layui-inline">
+                <input type="text" class="layui-input" id="phone" name="phone">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+                License plate:
+            </label>
+            <div class="layui-inline">
+                <input type="text" class="layui-input" id="carNumber" name="carNumber">
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+<style type="text/css">
+    .layui-side {
+        width: 500px !important;
+    }
+
+    .layui-side-scroll {
+        width: 500px !important;
+    }
+
+    .layui-body {
+        left: 500px !important;
+    }
+
+    .r1 {
+        position: absolute;
+        right: 50%;
+        bottom: 20%;
+        width: 100px;
+        height: 100px;
+    }
+
+    .r2 {
+        position: absolute;
+        right: 60%;
+        bottom: 20%;
+        width: 100px;
+        height: 100px;
+    }
+
+    .layui-show {
+        height: 100%;
+    }
+
+    /*  #space{
+        position: absolute;
+      !*  left:25%;
+        top:25%;*!
+        width: 120px;
+        height: 60px;
+
+        font-size: 15px;
+        font-family: "Times New Roman";
+        font-weight:bold;
+
+        background-color: #66ccff;
+      }*/
+
+    /*  #upload{
+        width: 120px;
+        height: 60px;
+
+        font-size: 15px;
+        font-family: "Times New Roman";
+        font-weight:bold;
+
+        background-color: khaki;
+
+      }*/
+</style>
+</html>

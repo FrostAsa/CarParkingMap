@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <link rel="stylesheet" href="../assets/layui/css/layui.css" media="all">
+    <script type="text/javascript" src="../assets/js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="../assets/layui/layui.js"></script>
+    <link rel="stylesheet" href="./css/adminLogin.css">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+<div class="wrap">
+    <img src="../imgs/bg.png" class="imgStyle">
+    <div class="loginForm">
+        <form action="/login" method="post">
+            <div class="logoHead">
+                <!--<h2 style="margin-top: 15px">Real estate sales platform management system</h2>-->
+            </div>
+            <div class="usernameWrapDiv">
+                <div class="usernameLabel">
+                    <label>Username:</label>
+                </div>
+                <div class="usernameDiv">
+                    <i class="layui-icon layui-icon-username adminIcon"></i>
+                    <input id="loginUsername" class="layui-input adminInput" type="text" name="username" placeholder="Input Username" >
+                </div>
+            </div>
+            <div class="usernameWrapDiv">
+                <div class="usernameLabel">
+                    <label>Password:</label>
+                </div>
+                <div class="passwordDiv">
+                    <i class="layui-icon layui-icon-password adminIcon"></i>
+                    <input id="loginPassword" class="layui-input adminInput" type="password" name="password" placeholder="Input Password">
+                </div>
+            </div>
+<!--            <div class="usernameWrapDiv">-->
+<!--                <div class="usernameLabel">-->
+<!--                    <label>verification code:</label>-->
+<!--                </div>-->
+<!--                <div class="cardDiv">-->
+<!--                    <input id="loginCard" class="layui-input cardInput" type="text" name="card" placeholder="input verification code">-->
+<!--                </div>-->
+<!--                <div class="codeDiv">-->
+<!--                    <input id="loginCode" class="layui-input codeInput"  type="button">-->
+<!--                </div>-->
+<!--            </div>-->
+            <div class="usernameWrapDiv">
+                <div class="submitLabel">
+                    <label>No account？<a href="#" id="loginRegister">Register</a></label>
+                </div>
+                <div class="submitDiv">
+                    <button id="loginBtn" type="submit" class="submit layui-btn layui-btn-primary" value="Login">Login</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    layui.use(['layer'],function () {
+        var layer = layui.layer;
+    })
+    $(function () {
+        // Page initialization to generate verification code
+        window.onload = createCode('#loginCode');
+        // verification code switch
+        $('#loginCode').click(function () {
+            createCode('#loginCode');
+        });
+        // // login event
+        // $('#loginBtn').click(function () {
+        //     login();
+        // });
+        // register event
+        $('#loginRegister').click(function () {
+            register();
+        });
+    });
+    // Generate verification code
+    function createCode(codeID) {
+        var code = "";
+        // verification code length
+        var codeLength = 4;
+        // captcha dom element
+        var checkCode = $(codeID);
+        // verification code random number
+        var random = [0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R',
+            'S','T','U','V','W','X','Y','Z'];
+        for (var i = 0;i < codeLength; i++){
+            // random number index
+            var index = Math.floor(Math.random()*36);
+            code += random[index];
+        }
+        // Assign the generated random verification code
+        checkCode.val(code);
+    }
+    // Verify verification code, username, password
+    function validateCode(inputID,codeID) {
+        // var inputCode = $(inputID).val().toUpperCase();
+        // var cardCode = $(codeID).val();
+        var loginUsername = $('#loginUsername').val();
+        var loginPassword = $('#loginPassword').val();
+        if ($.trim(loginUsername) == '' || $.trim(loginUsername).length<=0){
+            layer.alert("Username can not be empty!");
+            return false;
+        }
+        if ($.trim(loginPassword) == '' || $.trim(loginPassword).length<=0){
+            layer.alert("Password can not be empty!");
+            return false;
+        }
+        // if (inputCode.length<=0){
+        //     layer.alert("verification code must be filled");
+        //     return false;
+        // }
+        // if (inputCode != cardCode){
+        //     layer.alert("Please enter the correct verification code");
+        //     return false;
+        // }
+        return true;
+    }
+    // login process
+    function login() {
+        if (!validateCode('#loginCard','#loginCode')){
+            console.log(24654)
+            //block prompt
+        }else {
+            var loginUsername = $('#loginUsername').val();
+            var loginPassword = $('#loginPassword').val();
+            var params = {};
+            params.username = loginUsername;
+            params.password = loginPassword;
+            var loginLoadIndex = layer.load(2);
+            $('#loginBtn').val("logging in...");
+
+            console.log(params)
+            $.ajax({
+                type:'post',
+                url:'/login',
+                dataType:'json',
+                data:params,
+                contentType:false,
+                processData: false,
+                success:function (data) {
+                    layer.close(data);
+                    var jsonData = JSON.parse(data);
+                    if (jsonData.code == '999'){
+                        window.location.href = './static/templates/main.html';
+                    }
+                },
+                error:function () {
+                    layer.close(loginLoadIndex);
+                    $('#loginBtn').val("Login");
+                }
+            });
+        }
+
+    }
+    // registration process
+    function register() {
+        layer.open({
+            type:'1',
+            content:$('.registerPage'),
+            title:'Register',
+            area:['430px','400px'],
+            btn:['Register','Reset','Cancel'],
+            closeBtn:'1',
+            btn1:function (index,layero) {
+                //register callback
+                layer.close(index);
+                var registerUsername = $('#registerUsername').val();
+                var registerPassword = $('#registerPassword').val();
+                var registerWellPassword = $('#registerWellPassword').val();
+                var selectValue = $('#roleSelect option:selected').val();
+                var params = {};
+                params.username = registerUsername;
+                params.password = registerPassword;
+                params.registerWellPassword = registerWellPassword;
+                // params.selectValue = selectValue;
+                var registerLoadIndex = layer.load(2);
+                console.log(params)
+                $.ajax({
+                    type:'post',
+                    url:'/register',
+                    dataType:'json',
+                    data:JSON.stringify(params),
+                    contentType:'application/json',
+                    success:function (data) {
+                        layer.close(registerLoadIndex);
+                        layer.msg(data);
+                    },
+                    error:function () {
+                        layer.close(registerLoadIndex);
+                        layer.alert("Request Timeout！")
+                    }
+                });
+            },
+            btn2:function (index,layero) {
+                //reset callback
+                var registerUsername = $('#registerUsername').val("");
+                var registerPassword = $('#registerPassword').val("");
+                var registerWellPassword = $('#registerWellPassword').val("");
+                //Prevent registration page from closing
+                return false;
+            },
+            btn3:function (index,layero) {
+                //cancel callback
+            }
+        })
+    }
+</script>
+
+</body>
+<div class="registerPage">
+    <div class="registerDiv">
+        <form>
+            <div class="usernameWrapDiv">
+                <div class="usernameLabel">
+                    <label>Username:</label>
+                </div>
+                <div class="usernameDiv">
+                    <i class="layui-icon layui-icon-username adminIcon"></i>
+                    <input id="registerUsername" class="layui-input adminInput" type="text" name="username" placeholder="Input Username" >
+                </div>
+            </div>
+            <div class="usernameWrapDiv">
+                <div class="usernameLabel">
+                    <label>Password:</label>
+                </div>
+                <div class="passwordDiv">
+                    <i class="layui-icon layui-icon-password adminIcon"></i>
+                    <input id="registerPassword" class="layui-input adminInput" type="password" name="password" placeholder="Input Password">
+                </div>
+            </div>
+<!--            <div class="usernameWrapDiv">-->
+<!--                <div class="usernameLabel">-->
+<!--                    <label>confirm password:</label>-->
+<!--                </div>-->
+<!--                <div class="passwordDiv">-->
+<!--                    <i class="layui-icon layui-icon-password adminIcon"></i>-->
+<!--                    <input id="registerWellPassword" class="layui-input adminInput" type="password" name="password" placeholder="input password">-->
+<!--                </div>-->
+<!--            </div>-->
+        </form>
+    </div>
+</div>
+</html>

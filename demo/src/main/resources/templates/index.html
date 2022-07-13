@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Page</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> <!--Added-->
+</head>
+<body background="">
+        <!--<div  class="r1"><a   href="driver"><button class="r1_button">Car Parking</button></a></div>
+       <div  class="r2"><a   href="owner"><button class="r2_button">Parking Space Sharing</button></a></div>-->
+        <img src="../imgs/bg_index.jpg" class="imgStyle">
+
+        <div  class="r1" ><a   href="driver">
+            <button class="btn btn-primary" style="--bs-btn-padding-y: 5rem; --bs-btn-padding-x: 5rem; --bs-btn-font-size: 5rem;" id="r1_button">Car Parking</button></a>
+        <a href="owner"><button class="btn btn-info" style="--bs-btn-padding-y: 5rem; --bs-btn-padding-x: 5rem; --bs-btn-font-size: 5rem;" id="r2_button">Parking Space Sharing</button></a>
+        </div>
+</body>
+
+<style type="text/css">
+
+    .r1{
+   /*     position:absolute;
+        right:40%;
+        bottom:40%;
+        width: 300px;
+        height: 300px;
+*/
+
+
+        position: absolute;
+        left:10%;
+        top:25%;
+        width: 80vw;
+        height: 300px;
+
+        align-content: center;
+
+    }
+/*    .r2{
+        !*position:absolute;
+        right:40%;
+        bottom:10%;
+        width: 300px;
+        height: 300px;*!
+
+        position:absolute;
+        right:25%;
+        top:25%;
+        width: 350px;
+        height: 350px;
+
+        font-size: 50px;
+    }*/
+
+    #r1_button{
+        position: absolute;
+        left:10%;
+        top:10%;
+        /*        margin-right: 10vw;*/
+        width: 400px;
+        height: 350px;
+
+        font-size: 50px;
+        font-family: "Times New Roman";
+        font-weight:bold;
+
+/*        background-color: #66ccff;*/
+    }
+    #r2_button{
+        position: absolute;
+        right:10%;
+        top:10%;
+/*        margin-right: 10vw;*/
+        width: 400px;
+        height: 350px;
+
+        font-size: 50px;
+        font-family: "Times New Roman";
+        font-weight:bold;
+
+        /*background-color: khaki;*/
+    }
+
+
+.layui-show {
+    height: 100%;
+}
+
+</style>
+</html>
