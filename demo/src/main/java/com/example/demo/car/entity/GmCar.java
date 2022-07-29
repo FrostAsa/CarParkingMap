@@ -8,6 +8,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import java.io.Serializable;
 
+//This is the Car driver entity.
 
 @TableName("gm_car")
 public class GmCar  {
