@@ -34,12 +34,12 @@ public class GmCarOrder {
 
     @NotNull( message =  "startTime")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "America/St_Johns")
     private Date startTime;
 
     @NotNull( message =  "endTime")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "America/St_Johns")
     private Date endTime;
 
     private BigDecimal price;

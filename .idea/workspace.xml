@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03969e54-eaf5-4a80-a96b-2b44775f13da" name="Default Changelist" comment="Update driver.html for some modified">
+    <list default="true" id="03969e54-eaf5-4a80-a96b-2b44775f13da" name="Default Changelist" comment="Update 8/1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/car/entity/GmCarOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/car/entity/GmCarOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/util/AppUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/util/AppUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,7 +163,7 @@
       <workItem from="1659125515555" duration="1421000" />
       <workItem from="1659299256045" duration="192000" />
       <workItem from="1659300688136" duration="59000" />
-      <workItem from="1659358374027" duration="539000" />
+      <workItem from="1659358374027" duration="4806000" />
     </task>
     <task id="LOCAL-00001" summary="Update driver.html for some modified">
       <created>1659126239894</created>
@@ -177,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659126260537</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Update 8/1">
+      <created>1659359034600</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1659359034600</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -198,7 +207,8 @@
     <MESSAGE value="No changed" />
     <MESSAGE value="First version" />
     <MESSAGE value="Update driver.html for some modified" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update driver.html for some modified" />
+    <MESSAGE value="Update 8/1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update 8/1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

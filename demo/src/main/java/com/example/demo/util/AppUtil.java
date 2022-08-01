@@ -115,134 +115,53 @@ public class AppUtil {
         return null;
     }
 
-    /**
-     * read ID information
-     */
-//    public static IdCardDto getIdCardInfo(String idCard) {
-//        IdCardDto result = new IdCardDto();
-//
-//        if (idCard.length() == 18) {
-//
-//            idCard = idCard.toLowerCase();
-//            // Determine whether the check code is correct
-//            String validationCode = calcValidationCode(idCard);
-//            if (idCard.substring(idCard.length() - 1, idCard.length()).equals(validationCode)) {
-//
-//                // Read home address
-//                boolean flag = false;
-//                String nativePlace = idCard.substring(0, 6);
-////                for (District district : districtDtos) {
-////                    if (district.getNumber().equals(nativePlace)) {
-////                        flag = true;
-////                        nativePlace = district.getDescription();
-////                        break;
-////                    }
-////                }
-//                if (!flag) {
-//                    nativePlace = "";
-//                }
-//                result.setNativePlace(nativePlace);
-//
-//                String birthday = idCard.substring(6, 14);
-//                String year = birthday.substring(0, 4);
-//                String month = birthday.substring(4, 6);
-//                String day = birthday.substring(6, 8);
-//                birthday = year + "-" + month + "-" + day;
-//                // Determine if the date of birth is correct
-//                boolean birthdayFlag = validBirthday(birthday);
-//                if (birthdayFlag) {
-//                    result.setBirthday(birthday);
-//                } else {
-//                    result.setMessage("wrong ID number！");
-//                    return result;
-//                }
-//                // calculate age
-//                int monthTotal =periodAsMonths(birthday, getCurrentDateString());
-//                int age = monthTotal / 12;
-//                if (monthTotal % 12 != 0 && monthTotal > 0) {
-//                    age = age + 1;
-//                }
-//                result.setAge(age);
-//
-//                // read gender
-//                int sex = Integer.parseInt(idCard.substring(idCard.length() - 2, idCard.length() - 1));
-//                sex = sex % 2 == 0 ? 0 : 1;
-//                result.setSex(sex);
-//            } else {
-//                result.setMessage("wrong ID number");
-//                return result;
-//            }
-//
-//        } else {
-//            result.setMessage("ID should be 18-digit number");
-//        }
-//
-//        return result;
-//    }
 
-    /**
-     * Calculate ID verification code
-     */
-    public static String calcValidationCode(String idCard) {
-        String result = "";
-        int[] x = {7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2};
-        char[] y = {'1', '0', 'x', '9', '8', '7', '6', '5', '4', '3', '2'};
-        int sum = 0;
-        for (int i = 0; i < idCard.length() - 1; i++) {
-            int n = idCard.charAt(i) - 48;
-            sum += n * x[i];
-        }
-        sum = sum % 11;
-        result = String.valueOf(y[sum]);
-
-        return result;
-    }
 
     /**
      * Determine if the date of birth is correct
      */
-    public static boolean validBirthday(String birthday) {
-
-        // current date
-        String nowDate = getCurrentDateString();
-        String nowYear = nowDate.substring(0, 4);
-        String nowMonth = nowDate.substring(5, 7);
-        String nowDay = nowDate.substring(8, 10);
-
-        // date of birth
-        String year = birthday.substring(0, 4);
-        String month = birthday.substring(5, 7);
-        String day = birthday.substring(8, 10);
-
-        // determine if month is correct
-        if (Integer.valueOf(month) > 12) {
-            return false;
-        }
-
-        //Determine whether the number of days is greater than the number of days in the current year and month
-        int monthDay = getDaysInMonth(Integer.valueOf(year), Integer.valueOf(month));
-        if (Integer.valueOf(day) > monthDay) {
-            return false;
-        }
-
-        int y = compareStrNumber(year, nowYear);
-        int m = compareStrNumber(month, nowMonth);
-        int d = compareStrNumber(day, nowDay);
-
-        // Determine if the date of birth is greater than the current date
-        if (y == 1) {
-            return false;
-        }
-        if (y == 0 && m == 1) {
-            return false;
-        }
-        if (y == 0 && m == 0 && d == 1) {
-            return false;
-        }
-
-        return true;
-
-    }
+//    public static boolean validBirthday(String birthday) {
+//
+//        // current date
+//        String nowDate = getCurrentDateString();
+//        String nowYear = nowDate.substring(0, 4);
+//        String nowMonth = nowDate.substring(5, 7);
+//        String nowDay = nowDate.substring(8, 10);
+//
+//        // date of birth
+//        String year = birthday.substring(0, 4);
+//        String month = birthday.substring(5, 7);
+//        String day = birthday.substring(8, 10);
+//
+//        // determine if month is correct
+//        if (Integer.valueOf(month) > 12) {
+//            return false;
+//        }
+//
+//        //Determine whether the number of days is greater than the number of days in the current year and month
+//        int monthDay = getDaysInMonth(Integer.valueOf(year), Integer.valueOf(month));
+//        if (Integer.valueOf(day) > monthDay) {
+//            return false;
+//        }
+//
+//        int y = compareStrNumber(year, nowYear);
+//        int m = compareStrNumber(month, nowMonth);
+//        int d = compareStrNumber(day, nowDay);
+//
+//        // Determine if the date of birth is greater than the current date
+//        if (y == 1) {
+//            return false;
+//        }
+//        if (y == 0 && m == 1) {
+//            return false;
+//        }
+//        if (y == 0 && m == 0 && d == 1) {
+//            return false;
+//        }
+//
+//        return true;
+//
+//    }
 
 
     /**
